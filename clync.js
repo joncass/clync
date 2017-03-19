@@ -323,7 +323,7 @@ var clyncApp = angular.module('clyncApp', []);
                 $interval(function() {
                     timer.timeLeft = (timer.timeLeft - .1).toFixed(1);
 
-                    if (!timer.timeLeft) {
+                    if (timer.timeLeft === '0.0') {
                         // At the end, reset the timer.
                         timer.reset();
                     }
