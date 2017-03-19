@@ -110,7 +110,13 @@ var clyncApp = angular.module('clyncApp', []);
             addStateListener: function(args) {
                 var pubnub = this;
                 pubnub.instance.addListener({
-                    presence: args.callback,
+                    presence: function(presenceEvent) {
+                        // This is a state listener, so only trigger for
+                        // state-change events
+                        if (presenceEvent.action === 'state-change') {
+                            args.callback(presenceEvent);
+                        }
+                    },
                 });
             },
             /**
@@ -124,7 +130,13 @@ var clyncApp = angular.module('clyncApp', []);
             addPresenceListener: function(args) {
                 var pubnub = this;
                 pubnub.instance.addListener({
-                    presence: args.callback,
+                    presence: function(presenceEvent) {
+                        // This is a presence listener, so only trigger for
+                        // non-state-change events
+                        if (presenceEvent.action !== 'state-change') {
+                            args.callback(presenceEvent);
+                        }
+                    },
                 });
             },
             /**
