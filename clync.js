@@ -25,17 +25,6 @@ var clyncApp = angular.module('clyncApp', []);
         ***********************************************************************/
         $scope.util = {
             /**
-             * Rounds a number to the nearest tenth. Helper for floating point
-             * arithmetic.
-             *
-             * @param {number} - The number to be rounded.
-             *
-             * @return {number} - The rounded number.
-             */
-            roundToNearestTenth: function(num) {
-                return Math.round(10*(num))/10
-            },
-            /**
              * Creates a random username.
              *
              * @return {string} - A random username (Anon###).
@@ -332,7 +321,7 @@ var clyncApp = angular.module('clyncApp', []);
                 // Every 100 milliseconds, decrement the time left. Do this 100
                 // times to total 10 seconds.
                 $interval(function() {
-                    timer.timeLeft = $scope.util.roundToNearestTenth(timer.timeLeft - .1);
+                    timer.timeLeft = (timer.timeLeft - .1).toFixed(1);
 
                     if (!timer.timeLeft) {
                         // At the end, reset the timer.
