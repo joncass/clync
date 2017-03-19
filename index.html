@@ -200,7 +200,19 @@
                 <div class="tile is-child notification is-primary">
                     <div class="content">
                         <div class="subtitle">
-                            {{user.name}}
+                            <span class="icon">
+                                <i class="fa fa-user-o"></i>
+                            </span>
+                            <span>
+                                {{user.name}}
+                            </span>
+                            <span
+                                class="icon"
+                                ng-click="modal.activateUser()"
+                                style="cursor:pointer"
+                            >
+                                <i class="fa fa-pencil-square-o"></i>
+                            </span>
                         </div>
                         <div class="content">
                             <div class="card" ng-repeat="clync in user.clyncs">
