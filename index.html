@@ -23,7 +23,40 @@
 </head>
 <body ng-controller="ClyncController">
 
-<div class="modal {{user.modal.state}}">
+<div class="modal {{modal.states.rules}}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">welcome</p>
+        </header>
+        <section class="modal-card-body">
+            <div class="content">
+                <p>
+                    hi there. welcome to ClynC.
+                </p>
+                <p>
+                    a ClynC is a (mostly) synchronized click.
+                    when you click your red tile, your timer will start counting down.
+                    if another user clicks their red tile while your timer is running, you get points!
+                </p>
+                <p>
+                    that's pretty much all there is to it.
+                    enjoy!
+                </p>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <a
+                class="button is-success"
+                ng-click="modal.dismissRules()"
+            >
+                got it
+            </a>
+        </footer>
+    </div>
+</div>
+
+<div class="modal {{modal.states.user}}">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -40,7 +73,7 @@
                                 class="input is-large"
                                 type="text"
                                 ng-model="user.name"
-                                handle-enter="user.modal.dismiss()"
+                                handle-enter="modal.dismissUser()"
                                 maxlength="8"
                                 onFocus="this.select()"
                                 autofocus
@@ -55,9 +88,15 @@
         <footer class="modal-card-foot">
             <a
                 class="button is-success"
-                ng-click="user.modal.dismiss()"
+                ng-click="modal.dismissUser()"
             >
                 go
+            </a>
+            <a
+                class="button is-info"
+                ng-click="modal.activateRules()"
+            >
+                help
             </a>
         </footer>
     </div>
@@ -67,7 +106,11 @@
     <div class="column">
         <div class="tile is-ancestor">
             <div class="tile is-parent is-vertical">
-                <div class="tile is-child is-info notification">
+                <div
+                    class="tile is-child is-info notification"
+                    ng-click="modal.activateRules()"
+                    style="cursor:pointer"
+                >
                     <div class="content">
                         <div class="title">
                             <span class="icon">

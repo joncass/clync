@@ -27,10 +27,10 @@ var clyncApp = angular.module('clyncApp', []);
             /**
              * Creates a random username.
              *
-             * @return {string} - A random username (Anon###).
+             * @return {string} - A random username (anon###).
              */
             randomUsername: function() {
-                return 'Anon' + String(Math.floor(Math.random()*1000));
+                return 'anon' + String(Math.floor(Math.random()*1000));
             },
         };
 
@@ -176,19 +176,6 @@ var clyncApp = angular.module('clyncApp', []);
             name: $scope.util.randomUsername(),
             score: 0,
             clyncs: [],
-            /*******************************************************************
-            * user.modal
-            *
-            * The modal to welcome a user
-            *******************************************************************/
-            modal: {
-                // state starts as active, gets cleared when you dismiss it
-                state: 'is-active',
-                dismiss: function() {
-                    var userModal = this;
-                    userModal.state = '';
-                },
-            },
             /**
              * Initialize the user object and set up subscriptions.
              *
@@ -444,6 +431,80 @@ var clyncApp = angular.module('clyncApp', []);
             leaders: [],
         };
         $scope.leaderboard.initialize();
+
+
+        /***********************************************************************
+        * modal
+        *
+        * Modals for the username entry and help screen
+        ***********************************************************************/
+        $scope.modal = {
+            states: {
+                user: 'is-active',
+                rules: '',
+            },
+            _needsUsername: true,
+            /**
+             * Brings up the rules modal.
+             */
+            activateRules: function() {
+                var modal = this;
+                modal._activate({ type: 'rules' });
+
+                // the rules modal can get called while the user modal is up
+                // so dismiss it, but use _dismiss instead of dismissUser so
+                // that _needsUsername remains true
+                modal._dismiss({ type: 'user' });
+            },
+            /**
+             * Brings up the user modal.
+             */
+            activateUser: function() {
+                var modal = this;
+                modal._activate({ type: 'user' });
+            },
+            /**
+             * Dismisses the rules modal.
+             */
+            dismissRules: function() {
+                var modal = this;
+
+                if (modal._needsUsername) {
+                    modal.activateUser();
+                }
+
+                modal._dismiss({ type: 'rules' });
+            },
+            /**
+             * Dismisses the user modal.
+             */
+            dismissUser: function() {
+                var modal = this;
+
+                modal._needsUsername = false;
+                modal._dismiss({ type: 'user' });
+            },
+            /**
+             * Activates a modal.
+             *
+             * @param {object} - Arguments object. Contains the required fields:
+             *   @param {function} type - The type of modal to activate.
+             */
+            _activate: function(args) {
+                var modal = this;
+                modal.states[args.type] = 'is-active';
+            },
+            /**
+             * Dismisses a modal.
+             *
+             * @param {object} - Arguments object. Contains the required fields:
+             *   @param {function} type - The type of modal to dismiss.
+             */
+            _dismiss: function(args) {
+                var modal = this;
+                modal.states[args.type] = '';
+            },
+        };
 
     });
 })(clyncApp);
