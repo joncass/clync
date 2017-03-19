@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="ClyncController">
 
-<div class="modal {{user.modal.active}}">
+<div class="modal {{user.modal.state}}">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -152,12 +152,10 @@
                                         {{clync.points}}
                                     </p>
                                     <p class="card-footer-item">
-
                                         <span class="icon">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         {{clync.name}}
-
                                     </p>
                                 </footer>
                             </div>
