@@ -1,0 +1,194 @@
+<html ng-app="clyncApp">
+<head>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.5.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="clync.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body ng-controller="ClyncController">
+
+<div class="modal {{user.modal.active}}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">introduce yourself!</p>
+        </header>
+        <section class="modal-card-body">
+            <div class="columns">
+                <div class="column">
+                </div>
+                <div class="column is-3">
+                    <div class="field">
+                        <p class="control">
+                            <input
+                                class="input is-large"
+                                type="text"
+                                ng-model="user.name"
+                                handle-enter="user.modal.dismiss()"
+                                maxlength="8"
+                                onFocus="this.select()"
+                                autofocus
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <a
+                class="button is-success"
+                ng-click="user.modal.dismiss()"
+            >
+                go
+            </a>
+        </footer>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column">
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-vertical">
+                <div class="tile is-child is-info notification">
+                    <div class="content">
+                        <div class="title">
+                            <span class="icon">
+                                <i class="fa fa-mouse-pointer"></i>
+                            </span>
+                            ClynC
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-child is-primary notification">
+                    <div class="content">
+                        <div class="subtitle">
+                            <span class="icon">
+                                <i class="fa fa-trophy"></i>
+                            </span>
+                            Leaderboard
+                        </div>
+                        <div class="subtitle">
+                            <div ng-repeat="leader in leaderboard.leaders">
+                                {{leader.name}} - {{leader.score}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-child notification">
+                    <div class="content">
+                        <div class="subtitle">
+                            ad here
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="column is-6 has-text-centered">
+        <div class="box">
+            <h1 class="title">
+                {{user.score}}
+            </h1>
+        </div>
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent" ng-click="timer.handleClick()">
+                <div class="tile is-child notification is-danger">
+                    <div class="title">
+                        ClynC<br>
+                        here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <h1 class="title">
+
+
+                <span class="icon">
+                    <i class="fa fa-hourglass-o"></i>
+                </span>
+                {{timer.timeLeft}}
+            </h1>
+        </div>
+    </div>
+    <div class="column">
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-vertical">
+                <div class="tile is-child is-info notification">
+                    <div class="content">
+                        <div class="title">
+                            <span class="icon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <span>
+                                {{presence.occupancy}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-child notification is-primary">
+                    <div class="content">
+                        <div class="subtitle">
+                            {{user.name}}
+                        </div>
+                        <div class="content">
+                            <div class="card" ng-repeat="clync in user.clyncs">
+                                <div class="card-content">
+                                    <p class="subtitle">
+                                        ClynC
+                                    </p>
+                                </div>
+
+                                <footer class="card-footer">
+                                    <p class="card-footer-item">
+                                        {{clync.points}}
+                                    </p>
+                                    <p class="card-footer-item">
+
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        {{clync.name}}
+
+                                    </p>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-child notification">
+                    <div class="content">
+                        <div class="subtitle">
+                            ad here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                invite your friends!<br>
+                social network links
+            </p>
+            <p>
+                powered by angular, bulma, pubnub
+            </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
