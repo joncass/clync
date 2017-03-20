@@ -107,9 +107,8 @@
         <div class="tile is-ancestor">
             <div class="tile is-parent is-vertical">
                 <div
-                    class="tile is-child is-info notification"
+                    class="tile is-child is-info notification is-clickable"
                     ng-click="modal.activateRules()"
-                    style="cursor:pointer"
                 >
                     <div class="content">
                         <div class="title">
@@ -158,7 +157,7 @@
 
         <div class="tile is-ancestor">
             <div class="tile is-parent" ng-click="timer.handleClick()">
-                <div class="tile is-child notification is-danger" style="cursor:pointer">
+                <div class="tile is-child notification is-danger is-clickable">
                     <div class="title">
                         <div class="title">
                         </div>
@@ -208,9 +207,8 @@
                                 {{user.name}}
                             </span>
                             <span
-                                class="icon"
+                                class="icon is-clickable"
                                 ng-click="modal.activateUser()"
-                                style="cursor:pointer"
                             >
                                 <i class="fa fa-pencil-square-o"></i>
                             </span>

@@ -2,3 +2,7 @@
     /* icons need to shift down 5 pixels when next to title text*/
     padding-top: 5px;
 }
+
+.is-clickable {
+    cursor: pointer;
+}
