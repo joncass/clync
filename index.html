@@ -4,6 +4,7 @@
 
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.5.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
     <script src="clync.js"></script>
 
@@ -111,18 +112,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tile is-child is-primary notification">
+                <div class="tile is-child notification">
                     <div class="content">
                         <div class="subtitle">
-                            <span class="icon">
-                                <i class="fa fa-trophy"></i>
-                            </span>
-                            Leaderboard
-                        </div>
-                        <div class="subtitle">
-                            <div ng-repeat="leader in leaderboard.leaders">
-                                {{leader.name}} - {{leader.score}}
-                            </div>
+                            ad here
                         </div>
                     </div>
                 </div>
@@ -139,12 +132,41 @@
     </div>
     <div class="column is-6 has-text-centered">
         <div class="box">
-            <h1 class="title">
-                <span class="icon">
-                    <i class="fa fa-star-o"></i>
-                </span>
-                {{user.score}}
-            </h1>
+            <div class="columns">
+                <div class="column">
+                    <span class="icon">
+                        <i class="fa fa-user-o"></i>
+                    </span>
+                    <span>
+                        {{user.name}}
+                    </span>
+                    <span
+                        class="icon is-clickable"
+                        ng-click="modal.activateUser()"
+                    >
+                        <i class="fa fa-pencil-square-o"></i>
+                    </span>
+                </div>
+                <div class="column">
+                    <span class="title">
+                        <span class="icon">
+                            <i class="fa fa-star-o"></i>
+                        </span>
+                        {{user.score}}
+                    </span>
+                </div>
+                <div class="column">
+                    <div class="points" ng-show="user.hasActiveClync">
+                        <div>+{{user.activeClync.points}}</div>
+                        <div>
+                            <span class="icon is-small">
+                                <i class="fa fa-user-o"></i>
+                            </span>
+                            {{user.activeClync.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tile is-ancestor">
@@ -189,49 +211,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="tile is-child notification is-primary">
+                <div class="tile is-child is-primary notification">
                     <div class="content">
                         <div class="subtitle">
                             <span class="icon">
-                                <i class="fa fa-user-o"></i>
+                                <i class="fa fa-trophy"></i>
                             </span>
-                            <span>
-                                {{user.name}}
-                            </span>
-                            <span
-                                class="icon is-clickable"
-                                ng-click="modal.activateUser()"
-                            >
-                                <i class="fa fa-pencil-square-o"></i>
-                            </span>
+                            leaderboard
                         </div>
-                        <div class="content">
-                            <div class="card" ng-repeat="clync in user.clyncs">
-                                <div class="card-content">
-                                    <p class="subtitle">
-                                        ClynC
-                                    </p>
-                                </div>
-
-                                <footer class="card-footer">
-                                    <p class="card-footer-item">
-                                        {{clync.points}}
-                                    </p>
-                                    <p class="card-footer-item">
-                                        <span class="icon">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        {{clync.name}}
-                                    </p>
-                                </footer>
+                        <div>
+                            <div ng-repeat="leader in leaderboard.leaders">
+                                {{leader.name}} - {{leader.score}}
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tile is-child notification">
-                    <div class="content">
-                        <div class="subtitle">
-                            ad here
                         </div>
                     </div>
                 </div>

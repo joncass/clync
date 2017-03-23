@@ -1,8 +1,16 @@
 .title .icon {
     /* icons need to shift down 5 pixels when next to title text*/
-    padding-top: 5px;
+    margin-top: 5px;
 }
 
 .is-clickable {
     cursor: pointer;
+}
+
+.points {
+  transition: all .5s linear;
+  font-size: 10px;
+}
+.points.ng-hide {
+    opacity: 0;
 }

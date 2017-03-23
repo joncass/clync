@@ -1,4 +1,4 @@
-var clyncApp = angular.module('clyncApp', []);
+var clyncApp = angular.module('clyncApp', ['ngAnimate']);
 (function(app) {
 
     // set up a directive to allow text inputs to accept when pressing enter
@@ -18,6 +18,7 @@ var clyncApp = angular.module('clyncApp', []);
     });
 
     app.controller('ClyncController', function ClyncController($scope, $interval) {
+
         /***********************************************************************
         * util
         *
@@ -175,7 +176,6 @@ var clyncApp = angular.module('clyncApp', []);
             ID: $scope.pubnub.instance.getUUID(),
             name: $scope.util.randomUsername(),
             score: 0,
-            clyncs: [],
             /**
              * Initialize the user object and set up subscriptions.
              *
@@ -240,20 +240,14 @@ var clyncApp = angular.module('clyncApp', []);
             addClync: function(clync) {
                 var user = this;
 
-                // Add the given clync to the user's list of clyncs. Then, if
-                // we have more than 4, knock the last one off.
-                user.clyncs.unshift(clync);
-                if (user.clyncs.length > 4) {
-                    user.clyncs.pop();
-                }
-
-                // After two seconds, remove this Clync from the list.
+                // this is the active clync for two seconds
+                user.activeClync = clync;
+                user.hasActiveClync = true;
                 $interval(function() {
-                    var index = user.clyncs.indexOf(clync);
-                    if (index > -1) {
-                        user.clyncs.splice(index, 1);
+                    if (user.activeClync === clync) {
+                        user.hasActiveClync = false;
                     }
-                }, 2000);
+                }, 1000);
 
                 user.incrementScore(clync.points);
             },
