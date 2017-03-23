@@ -37,6 +37,84 @@
             <div class="container">
                 <div class="heading">
                     <h1 class="title">
+                        animation
+                    </h1>
+                    <h2 class="subtitle">
+                        2017-03-23
+                    </h2>
+                </div>
+                <div class="content">
+                    <p>
+                        In the original version, when you got a ClynC (more points) a card would appear in a list in the right column.
+                        This presented two problems.
+                        First of all, the page height would vary dramatically as ClynCs came and went (they'd vanish after two seconds), which was jarring.
+                        Secondly, there was a large visual disconnect between the score going up and the notification of it.
+                        I decided to move the notification into the scoreboard to solve these two problems, and also add an animation for it to fade in and out.
+                    </p>
+                    <p>
+                        AngularJS has an <a href="https://docs.angularjs.org/api/ngAnimate">angular-animate package and ngAnimate feature</a>.
+                        Given how easy AngularJS had been to use so far, I assumed this would be similarly painless.
+                        Unfortunately, I found the documentation and examples on the AngularJS site challenging to use, and furthermore couldn't find simple examples after Googling around.
+                        The closest I found was <a href="https://codepen.io/nicholaspufal/pen/wcHno">this CodePen</a>, but even that was still overcomplicated.
+                        So I decided to make the simplest one I could.
+                        You can see the <a href="http://codepen.io/joncass/pen/NpzNjz">CodePen here</a>, and read on for an explanation.
+                    </p>
+                    <article class="message">
+                        <div class="message-body">
+                            <p class="subtitle">
+                                HTML
+                            </p>
+                            <p>
+                                In the HTML, you first have to include the AngularJS and Angular-Animate libraries.
+                                You declare your app and controller on the DOM element that will correspond with the $scope in the JavaScript.
+                                Next we have a div with the ng-show attribute.
+                                The value of the attribute (in this case "visibility") corresponds to an attribute of the $scope variable.
+                                Initially, visibility is undefined and so the element is not shown.
+                                Below this we have a button with an ng-click handler.
+                                The handler switches the visibility attribute between true and false.
+                                When this button is clicked, the truthiness of visibility will toggle, so the div will move between being hidden and shown.
+                                Without any CSS, this would be an instantaneous transition.
+                                Let's see what the CSS is doing for us.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="message">
+                        <div class="message-body">
+                            <p class="subtitle">
+                                CSS
+                            </p>
+                            <p>
+                                In the CSS, we have two rules.
+                                The first, tells us that <b>all</b> transitions on divs should last <b>.5</b> seconds.
+                                The second tells us that divs with class ng-hide should have 0 opacity.
+                                AngularJS will add and remove the ng-hide class for any element with an ng-show attribute (where the class will be present if the ng-show is false and vice versa).
+                                When the class gets removed, the opacity will go from 0 to 1, but because of the transition rule, this will happen over time instead of instantly.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="message">
+                        <div class="message-body">
+                            <p class="subtitle">
+                                JS
+                            </p>
+                            <p>
+                                As you can see, the JavaScript is trivial.
+                                Its purpose is simply to instantiate the app and controller so that the AngularJS infrastructure can set classes and visibility based on variables in the $scope.
+                            </p>
+                        </div>
+                    </article>
+                    <p>
+                        So that's all there is to it.
+                        Hopefully this helps the next person get animation up and running in their app.
+                        Good luck!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="heading">
+                    <h1 class="title">
                         introduction
                     </h1>
                     <h2 class="subtitle">
