@@ -251,6 +251,39 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
 
                 user.incrementScore(clync.points);
             },
+            /**
+             * Sets the user's 1st, 2nd, or 3rd place tag
+             */
+            setTag: function() {
+                var user = this;
+
+                if (
+                    $scope.leaderboard.third
+                    && $scope.leaderboard.third.score === user.score
+                ) {
+                    user.isThird = true;
+                }
+                else {
+                    user.isThird = false;
+                }
+
+                if (
+                    $scope.leaderboard.second
+                    && $scope.leaderboard.second.score === user.score
+                ) {
+                    user.isSecond = true;
+                }
+                else {
+                    user.isSecond = false;
+                }
+
+                if ($scope.leaderboard.first.score === user.score) {
+                    user.isFirst = true;
+                }
+                else {
+                    user.isFirst = false;
+                }
+            },
         };
         $scope.user.initialize();
 
@@ -424,6 +457,8 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
                 leaderboard.first = leaders[0];
                 leaderboard.second = leaders[1];
                 leaderboard.third = leaders[2];
+
+                $scope.user.setTag();
             },
         };
         $scope.leaderboard.initialize();
