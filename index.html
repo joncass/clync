@@ -29,7 +29,10 @@
                 </p>
                 <p>
                     a ClynC is a (mostly) synchronized click.
+                </p>
+                <p>
                     when you click your red tile, your timer will start counting down.
+                </p>
                     if another user clicks their red tile while your timer is running, you get points!
                 </p>
                 <p>
@@ -37,15 +40,15 @@
                     enjoy!
                 </p>
             </div>
+            <div class="level-right">
+                <a
+                    class="button is-success is-medium"
+                    ng-click="modal.dismissRules()"
+                >
+                    got it
+                </a>
+            </div>
         </section>
-        <footer class="modal-card-foot">
-            <a
-                class="button is-success"
-                ng-click="modal.dismissRules()"
-            >
-                got it
-            </a>
-        </footer>
     </div>
 </div>
 
@@ -56,10 +59,8 @@
             <p class="modal-card-title">introduce yourself!</p>
         </header>
         <section class="modal-card-body">
-            <div class="columns">
-                <div class="column">
-                </div>
-                <div class="column is-3">
+            <div class="level">
+                <div class="level-left">
                     <div class="field">
                         <p class="control">
                             <input
@@ -74,24 +75,24 @@
                         </p>
                     </div>
                 </div>
-                <div class="column">
+                <div class="level-right subtitle">
+                    <a
+                        class="level-item"
+                        ng-click="modal.activateRules()"
+                    >
+                    <b>
+                        help
+                    </b>
+                    </a>
+                    <a
+                        class="level-item button is-medium is-success"
+                        ng-click="modal.dismissUser()"
+                    >
+                        start
+                    </a>
                 </div>
             </div>
         </section>
-        <footer class="modal-card-foot">
-            <a
-                class="button is-success"
-                ng-click="modal.dismissUser()"
-            >
-                go
-            </a>
-            <a
-                class="button is-info"
-                ng-click="modal.activateRules()"
-            >
-                help
-            </a>
-        </footer>
     </div>
 </div>
 
