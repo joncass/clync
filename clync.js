@@ -420,9 +420,11 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
                 });
 
                 // grab the first three
-                leaderboard.leaders = _.first(sortedScores, 3);
+                var leaders = _.first(sortedScores, 3);
+                leaderboard.first = leaders[0];
+                leaderboard.second = leaders[1];
+                leaderboard.third = leaders[2];
             },
-            leaders: [],
         };
         $scope.leaderboard.initialize();
 

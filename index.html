@@ -214,15 +214,60 @@
                 </div>
                 <div class="tile is-child is-primary notification">
                     <div class="content">
-                        <div class="subtitle">
-                            <span class="icon">
+                        <div class="has-text-centered">
+                            <span class="icon is-large">
                                 <i class="fa fa-trophy"></i>
                             </span>
-                            leaderboard
                         </div>
-                        <div>
-                            <div ng-repeat="leader in leaderboard.leaders">
-                                {{leader.name}} - {{leader.score}}
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tag is-warning">
+                                    1st
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.first.name}}
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.first.score}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tag is-light">
+                                    2nd
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.second.name}}
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.second.score}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <span class="tag is-dark">
+                                    3rd
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.third.name}}
+                                </span>
+                            </div>
+                            <div class="column">
+                                <span>
+                                    {{leaderboard.third.score}}
+                                </span>
                             </div>
                         </div>
                     </div>
