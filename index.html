@@ -19,10 +19,10 @@
 <div class="modal {{modal.states.rules}}">
     <div class="modal-background"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">welcome</p>
-        </header>
-        <section class="modal-card-body">
+        <section class="box">
+            <div class="title">
+                welcome
+            </div>
             <div class="content">
                 <p>
                     hi there. welcome to ClynC.
@@ -57,10 +57,10 @@
 <div class="modal {{modal.states.user}}">
     <div class="modal-background"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">introduce yourself!</p>
-        </header>
-        <section class="modal-card-body">
+        <section class="box">
+            <div class="title">
+                introduce yourself
+            </div>
             <div class="level">
                 <div class="level-left">
                     <div class="field">
@@ -206,6 +206,7 @@
                 </span>
                 {{timer.timeLeft}}
             </h1>
+            <progress class="progress is-info" value="{{timer.timeLeft}}" max="10">timer.timeLeft</progress>
         </div>
     </div>
     <div class="column">
