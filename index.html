@@ -210,81 +210,75 @@
         </div>
     </div>
     <div class="column">
-        <div class="tile is-ancestor">
-            <div class="tile is-parent is-vertical">
-                <div class="tile is-child is-info notification">
-                    <div class="content">
-                        <div class="title">
-                            <span class="icon">
-                                <i class="fa fa-user-o"></i>
-                            </span>
-                            <span>
-                                {{presence.occupancy}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tile is-child is-primary notification">
-                    <div class="content">
-                        <div class="has-text-centered">
-                            <span class="icon is-large">
+        <div class="box">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="icon is-medium">
                                 <i class="fa fa-trophy"></i>
                             </span>
-                        </div>
-                        <div class="columns">
-                            <div class="column">
-                                <span class="tag is-warning">
-                                    1st
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.first.name}}
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.first.score}}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column">
-                                <span class="tag is-light">
-                                    2nd
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.second.name}}
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.second.score}}
-                                </span>
-                            </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column">
-                                <span class="tag is-dark">
-                                    3rd
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.third.name}}
-                                </span>
-                            </div>
-                            <div class="column">
-                                <span>
-                                    {{leaderboard.third.score}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </th>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                        </th>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <th>
+                            <span class="tag is-warning">
+                                1st
+                            </span>
+                        </th>
+                        <td>
+                            {{leaderboard.first.name}}
+                        </td>
+                        <td>
+                            {{leaderboard.first.score}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <span class="tag is-light">
+                                2nd
+                            </span>
+                        </th>
+                        <td>
+                            {{leaderboard.second.name}}
+                        </td>
+                        <td>
+                            {{leaderboard.second.score}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <span class="tag is-dark">
+                                3rd
+                            </span>
+                        </th>
+                        <td>
+                            {{leaderboard.third.name}}
+                        </td>
+                        <td>
+                            {{leaderboard.third.score}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

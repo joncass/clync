@@ -110,26 +110,6 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
                 });
             },
             /**
-             * Adds a listener to the "presence events" on the pubnub channel
-             * with a given callback.
-             *
-             * @param {object} - Arguments object. Contains the required fields:
-             *   @param {function} callback - The callback to be invoked when a
-             *   state event is heard.
-             */
-            addPresenceListener: function(args) {
-                var pubnub = this;
-                pubnub.instance.addListener({
-                    presence: function(presenceEvent) {
-                        // This is a presence listener, so only trigger for
-                        // non-state-change events
-                        if (presenceEvent.action !== 'state-change') {
-                            args.callback(presenceEvent);
-                        }
-                    },
-                });
-            },
-            /**
              * Triggers a "state event" on the pubnub channel for the current
              * user with the given state.
              *
@@ -358,45 +338,6 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
             },
         };
         $scope.timer.initialize();
-
-        /***********************************************************************
-        * presence
-        *
-        * The presence tracker.
-        ***********************************************************************/
-        $scope.presence = {
-            // Start the presence detector with a '#'. This is kind of ugly, but
-            // I think it's better than leaving the space blank or inaccurate.
-            occupancy: '#',
-            /**
-             * Initialize the presence tracker. Check the current occupancy and
-             * set up a listener to track future events.
-             */
-            initialize: function() {
-                var presence = this;
-
-                var pubnub = $scope.pubnub;
-                pubnub.addPresenceListener({
-                    callback: presence.refreshOccupancy
-                });
-                presence.refreshOccupancy();
-
-            },
-            /**
-             * Get the number of people present and update the counter.
-             */
-            refreshOccupancy: function() {
-                var presence = this;
-
-                var pubnub = $scope.pubnub;
-                pubnub.checkOccupancy({
-                    callback: function(occupancy) {
-                        presence.occupancy = occupancy;
-                    },
-                });
-            },
-        };
-        $scope.presence.initialize();
 
         /***********************************************************************
         * leaderboard
