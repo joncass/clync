@@ -240,7 +240,9 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
             addClync: function(clync) {
                 var user = this;
 
-                // this is the active clync for two seconds
+                $scope.timer.noClyncs = false;
+
+                // this is the active clync for one second
                 user.activeClync = clync;
                 user.hasActiveClync = true;
                 $interval(function() {
@@ -316,8 +318,16 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
             reset: function() {
                 var timer = this;
 
+                // If you got noClynCs you get a bonus 10k!
+                if (timer.noClyncs) {
+                    $scope.user.addClync({
+                        points: 10000,
+                    });
+                }
+
                 timer.timeLeft = 10;
                 timer._countingDown = false;
+                timer.noClyncs = true;
             },
             /**
              * Start counting down!

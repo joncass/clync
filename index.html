@@ -33,7 +33,9 @@
                 <p>
                     when you click your red tile, your timer will start counting down.
                 </p>
+                <p>
                     if another user clicks their red tile while your timer is running, you get points!
+                    and if you get no ClynCs before your timer runs out, you get bonus points!
                 </p>
                 <p>
                     that's pretty much all there is to it.
@@ -168,7 +170,7 @@
                 <div class="column">
                     <div class="points" ng-show="user.hasActiveClync">
                         <div>+{{user.activeClync.points}}</div>
-                        <div>
+                        <div ng-show="user.activeClync.name">
                             <span class="icon is-small">
                                 <i class="fa fa-user-o"></i>
                             </span>
