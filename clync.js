@@ -259,31 +259,24 @@ var clyncApp = angular.module('clyncApp', ['ngAnimate']);
             setTag: function() {
                 var user = this;
 
+                user.isFirst = false;
+                user.isSecond = false;
+                user.isThird = false;
+
                 if (
                     $scope.leaderboard.third
                     && $scope.leaderboard.third.score === user.score
                 ) {
                     user.isThird = true;
                 }
-                else {
-                    user.isThird = false;
-                }
-
-                if (
+                else if (
                     $scope.leaderboard.second
                     && $scope.leaderboard.second.score === user.score
                 ) {
                     user.isSecond = true;
                 }
-                else {
-                    user.isSecond = false;
-                }
-
-                if ($scope.leaderboard.first.score === user.score) {
+                else if ($scope.leaderboard.first.score === user.score) {
                     user.isFirst = true;
-                }
-                else {
-                    user.isFirst = false;
                 }
             },
         };
