@@ -31,8 +31,83 @@
 
 <section class="section">
 <div class="columns">
-    <div class="column is-8 is-offset-1">
-        <section class="section">
+    <div class="column is-2">
+        <nav class="panel">
+            <p class="panel-heading">
+                posts
+            </p>
+            <a class="panel-block" href="#post-introduction">
+                <span class="panel-icon">
+                    <i class="fa fa-book"></i>
+                </span>
+                introduction
+            </a>
+            <a class="panel-block" href="#post-animation">
+                <span class="panel-icon">
+                    <i class="fa fa-book"></i>
+                </span>
+                animation
+            </a>
+        </nav>
+    </div>
+    <div class="column is-7">
+        <section class="section" id="post-introduction">
+            <div class="container">
+                <div class="heading">
+                    <h1 class="title">
+                        introduction
+                    </h1>
+                    <h2 class="subtitle">
+                        2017-03-20
+                    </h2>
+                </div>
+                <div class="content">
+                    <p>
+                        I made a <a href="http://clync.me">web app</a>! This is the blog about the app.
+                    </p>
+                    <p>
+                        My dad gave me the seed of the idea for the ClynC app.
+                        He envisioned an app where simultaneous clicks would link users in a chat.
+                        Maybe with a "question of the day" to discuss.
+                        As you can see, I've gone a different way with it.
+                    </p>
+                    <p>
+                        I spent a weekend working on the prototype for ClynC.
+                        It's amazing what you can accomplish in just a few days by building on top of the great frameworks out there.
+                        For ClynC, I'm using
+                            <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
+                            <a href="http://bulma.io/" target="_blank">bulma.io</a>,
+                            and <a href="https://www.pubnub.com/" target="_blank">PubNub</a>.
+                    </p>
+                    <p>
+                        For my JavaScript framework, I knew I wanted something simple and powerful.
+                        After a bit of reading, I was down to React or AngularJS.
+                        I looked at some sample code, and tried both out, and React seemed to have significantly more overhead.
+                        So I decided to move forward with AngularJS.
+                    </p>
+                    <p>
+                        I knew I wanted to build my CSS on top of flexbox, which is a joy to use.
+                        If you haven't had a chance to play with flexbox, I strongly recommend trying it out.
+                        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">This CSS-Tricks</a> article is a great starters' guide.
+                        I quickly stumbled on the elegant bulma.io, which also happened to be well-documented.
+                        Decision made.
+                    </p>
+                    <p>
+                        Finally, PubNub.
+                        Pub/sub as a service, with no server component required?
+                        Sign me up.
+                        This was the easiest decision for me, as I had been looking for an excuse to play with PubNub.
+                        An app that required all of the users' states to be kept in sync was a perfect candidate.
+                    </p>
+                    <p>
+                        So, that's where I am now.
+                        I'm hoping to add a bit of new functionality, and some ads, and then start getting the word out soon.
+                        Thanks for reading!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="post-animation">
             <div class="container">
                 <div class="heading">
                     <h1 class="title">
@@ -106,62 +181,6 @@
                         So that's all there is to it.
                         Hopefully this helps the next person get animation up and running in their app.
                         Good luck!
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <div class="heading">
-                    <h1 class="title">
-                        introduction
-                    </h1>
-                    <h2 class="subtitle">
-                        2017-03-20
-                    </h2>
-                </div>
-                <div class="content">
-                    <p>
-                        I made a <a href="http://clync.me">web app</a>! This is the blog about the app.
-                    </p>
-                    <p>
-                        My dad gave me the seed of the idea for the ClynC app.
-                        He envisioned an app where simultaneous clicks would link users in a chat.
-                        Maybe with a "question of the day" to discuss.
-                        As you can see, I've gone a different way with it.
-                    </p>
-                    <p>
-                        I spent a weekend working on the prototype for ClynC.
-                        It's amazing what you can accomplish in just a few days by building on top of the great frameworks out there.
-                        For ClynC, I'm using
-                            <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
-                            <a href="http://bulma.io/" target="_blank">bulma.io</a>,
-                            and <a href="https://www.pubnub.com/" target="_blank">PubNub</a>.
-                    </p>
-                    <p>
-                        For my JavaScript framework, I knew I wanted something simple and powerful.
-                        After a bit of reading, I was down to React or AngularJS.
-                        I looked at some sample code, and tried both out, and React seemed to have significantly more overhead.
-                        So I decided to move forward with AngularJS.
-                    </p>
-                    <p>
-                        I knew I wanted to build my CSS on top of flexbox, which is a joy to use.
-                        If you haven't had a chance to play with flexbox, I strongly recommend trying it out.
-                        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">This CSS-Tricks</a> article is a great starters' guide.
-                        I quickly stumbled on the elegant bulma.io, which also happened to be well-documented.
-                        Decision made.
-                    </p>
-                    <p>
-                        Finally, PubNub.
-                        Pub/sub as a service, with no server component required?
-                        Sign me up.
-                        This was the easiest decision for me, as I had been looking for an excuse to play with PubNub.
-                        An app that required all of the users' states to be kept in sync was a perfect candidate.
-                    </p>
-                    <p>
-                        So, that's where I am now.
-                        I'm hoping to add a bit of new functionality, and some ads, and then start getting the word out soon.
-                        Thanks for reading!
                     </p>
                 </div>
             </div>
