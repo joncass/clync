@@ -51,6 +51,12 @@
                 </span>
                 animation
             </a>
+            <a class="panel-block" href="#post-tables">
+                <span class="panel-icon">
+                    <i class="fa fa-sticky-note-o"></i>
+                </span>
+                tables
+            </a>
         </nav>
     </div>
     <div class="column is-7">
@@ -184,6 +190,58 @@
                         So that's all there is to it.
                         Hopefully this helps the next person get animation up and running in their app.
                         Good luck!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="post-tables">
+            <div class="container">
+                <div class="heading">
+                    <h1 class="title">
+                        tables
+                    </h1>
+                    <h2 class="subtitle">
+                        2017-03-26
+                    </h2>
+                </div>
+                <div class="content">
+                    <p>
+                        My original leaderboard implementation used <a href="http://bulma.io/documentation/grid/columns/">bulma.io columns</a>.
+                        This had the desired effect in the desktop layout, but on the mobile layout (which stacks columns) it was unreadable.
+                        I'll write more about mobile layouts in my next post, but this post will focus on how I solved the leaderboard problem.
+                    </p>
+                    <p>
+                        I browsed the bulma.io documentation and found a few elements that were workable.
+                        One that jumped out at me was the <a href="http://bulma.io/documentation/elements/table/">table element</a>.
+                        My gut reaction was to skip the table and move on.
+                        After all, if my training as a web developer had taught me one thing it was: table bad!
+                    </p>
+                    <p>
+                        But then I began to wonder.
+                        What exactly is so bad about tables?
+                        I brought my question to Google, and of course was rewarded with plenty of results.
+                        Reading through the titles of the results, I noticed something interesting.
+                        There was a definite distinction to be made between the use of tables for layout and the use of tables for, well, tabular data.
+                    </p>
+                    <p>
+                        It seems that there are three camps:
+                        <ul>
+                            <li>Tables are bad.</li>
+                            <li>Tables are bad for layout, but fine for tabular data.</li>
+                            <li>Tables are good for everything. Or at least, better than div layouts.</li>
+                        </ul>
+                    </p>
+                    <p>
+                        After reading through some of the
+                            <a href="https://www.hotdesign.com/seybold/everything.html">articles</a>,
+                            <a href="http://stackoverflow.com/questions/83073/why-not-use-tables-for-layout-in-html">forum</a>
+                            <a href="https://css-tricks.com/forums/topic/are-tables-a-bad-thing/">discussions</a>,
+                            and
+                            <a href="http://csszengarden.com/">examples</a>,
+                        I decided that using a table for my leaderboard (which is basically tabular data) would be fine.
+                        However, I now understand why tables should be avoided as the core structure of a page.
+                        This seems to land me squarely in the second camp.
+                        If, like me, you know that "table bad" but don't really know why, I encourage you to read through them!
                     </p>
                 </div>
             </div>
