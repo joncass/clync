@@ -57,6 +57,12 @@
                 </span>
                 tables
             </a>
+            <a class="panel-block" href="#post-compatibility">
+                <span class="panel-icon">
+                    <i class="fa fa-sticky-note-o"></i>
+                </span>
+                compatibility
+            </a>
         </nav>
     </div>
     <div class="column is-7">
@@ -85,7 +91,7 @@
                         It's amazing what you can accomplish in just a few days by building on top of the great frameworks out there.
                         For ClynC, I'm using
                             <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
-                            <a href="http://bulma.io/" target="_blank">bulma.io</a>,
+                            <a href="http://bulma.io/" target="_blank">Bulma</a>,
                             and <a href="https://www.pubnub.com/" target="_blank">PubNub</a>.
                     </p>
                     <p>
@@ -98,7 +104,7 @@
                         I knew I wanted to build my CSS on top of flexbox, which is a joy to use.
                         If you haven't had a chance to play with flexbox, I strongly recommend trying it out.
                         <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">This CSS-Tricks</a> article is a great starters' guide.
-                        I quickly stumbled on the elegant bulma.io, which also happened to be well-documented.
+                        I quickly stumbled on the elegant Bulma, which also happened to be well-documented.
                         Decision made.
                     </p>
                     <p>
@@ -206,12 +212,12 @@
                 </div>
                 <div class="content">
                     <p>
-                        My original leaderboard implementation used <a href="http://bulma.io/documentation/grid/columns/">bulma.io columns</a>.
+                        My original leaderboard implementation used <a href="http://bulma.io/documentation/grid/columns/">Bulma columns</a>.
                         This had the desired effect in the desktop layout, but on the mobile layout (which stacks columns) it was unreadable.
                         I'll write more about mobile layouts in my next post, but this post will focus on how I solved the leaderboard problem.
                     </p>
                     <p>
-                        I browsed the bulma.io documentation and found a few elements that were workable.
+                        I browsed the Bulma documentation and found a few elements that were workable.
                         One that jumped out at me was the <a href="http://bulma.io/documentation/elements/table/">table element</a>.
                         My gut reaction was to skip the table and move on.
                         After all, if my training as a web developer had taught me one thing it was: table bad!
@@ -242,6 +248,75 @@
                         However, I now understand why tables should be avoided as the core structure of a page.
                         This seems to land me squarely in the second camp.
                         If, like me, you know that "table bad" but don't really know why, I encourage you to read through them!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="post-compatibility">
+            <div class="container">
+                <div class="heading">
+                    <h1 class="title">
+                        compatibility
+                    </h1>
+                    <h2 class="subtitle">
+                        2017-03-26
+                    </h2>
+                </div>
+                <div class="content">
+                    <p>
+                        I wanted ClynC to work on many browsers and devices.
+                        My hope was that by using a CSS framework like Bulma, this would be taken care of for me.
+                        And, for the most part, it did just that.
+                        Bulma's website has a
+                            <a href="http://bulma.io/documentation/overview/responsiveness/">responsiveness page</a>
+                        that clearly documents its mobile-first philosophy, and indeed the layout is very responsive for most screen sizes.
+                        I have also seen very few cross-browser issues so far.
+                        In this post I'll talk about a couple of the issues that I did see, and how I resolved them.
+                    </p>
+                    <article class="message">
+                        <div class="message-body">
+                            <p class="subtitle">
+                                Column stacking
+                            </p>
+                            <p>
+                                As mentioned on Bulma's responsiveness page, its columns will automatically stack at widths under 768px.
+                                I kept that in mind while I was designing the page, making sure to choose page locations for elements that would make sense in both the desktop and mobile views.
+                                The two places where this did not work as well for me were the leaderboard and the footer.
+                                I discussed the leaderboard issues in the <a href="#post-tables">last post</a>.
+                                As for the footer, I had two concerns.
+                                First of all, the left column is left-justified, the right-column is right-justified, and the center column is centered.
+                                This meant that when they stacked, the footer had a weird diagonal feel.
+                                And secondly, I didn't want a lot of scrolling to be required to consume the footer itself.
+                                Luckily, Bulma had me covered.
+                                By adding the <b>is-mobile</b> class to the footer, Bulma understood that it should remain horizontal at all widths.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="message">
+                        <div class="message-body">
+                            <p class="subtitle">
+                                Timer progress
+                            </p>
+                            <p>
+                                The timer has two ways of indicating the time left.
+                                It has both a numerical countdown, and a progress bar.
+                                The progress bar uses the new HTML5 progress element, that I had not heard of before.
+                                The examples on
+                                    <a href="http://bulma.io/documentation/elements/progress/">Bulma's documentation</a>
+                                use the <b>value</b> attribute.
+                                Since I am using AngularJS, I set it to <b>{{timer.timeLeft}}</b>.
+                                This worked great on Chrome, but unfortunately did not work on Edge.
+                                A quick Google search yielded the suggestion to change it from <b>value="{{timer.timeLeft}}"</b> to <b>ng-value="timer.timeLeft"</b>.
+                                In other words, use explicit AngularJS binding.
+                                That did the trick - it now worked in Edge!
+                            </p>
+                        </div>
+                    </article>
+                    <p>
+                        With those quick fixes out of the way, ClynC now works on Chrome, Safari, and Edge at most reasonable widths.
+                        It doesn't look right on earlier versions of IE, due to extensive use of flexbox.
+                        Additionally, I'm sure there are countless browsers, devices, screen sizes, etc that I have not tested.
+                        But the ease with which I was able to get at least these few things right, was definitely a pleasant surprise.
                     </p>
                 </div>
             </div>
@@ -338,7 +413,7 @@
             <div class="subtitle">
                 powered by
                 <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
-                <a href="http://bulma.io/" target="_blank">bulma.io</a>,
+                <a href="http://bulma.io/" target="_blank">Bulma</a>,
                 <a href="https://www.pubnub.com/" target="_blank">PubNub</a>
             </div>
             <div class="subtitle">
